@@ -20,6 +20,9 @@ import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { AppComponent } from 'app/app.component';
 import { AppStoreModule } from 'app/store/store.module';
 import { LayoutModule } from 'app/layout/layout.module';
+import { OnSiteAdminComponent } from './on-site-admin/on-site-admin.component';
+import {MatTableModule} from "@angular/material/table";
+import {MaterialModule} from "./main/angular-material-elements/material.module";
 
 const appRoutes: Routes = [
     {
@@ -43,16 +46,21 @@ const appRoutes: Routes = [
         loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
     },
     {
+        path      : 'on-site-admin',
+        component: OnSiteAdminComponent
+    },
+    {
         path      : '**',
         redirectTo: 'apps/dashboards/analytics'
-    }
+    },
 ];
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        OnSiteAdminComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -60,7 +68,7 @@ const appRoutes: Routes = [
 
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
-            delay             : 0,
+            delay: 0,
             passThruUnknownUrl: true
         }),
 
@@ -80,7 +88,8 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        AppStoreModule
+        AppStoreModule,
+        MaterialModule,
     ],
     bootstrap   : [
         AppComponent
