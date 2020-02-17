@@ -21,8 +21,11 @@ import { AppComponent } from 'app/app.component';
 import { AppStoreModule } from 'app/store/store.module';
 import { LayoutModule } from 'app/layout/layout.module';
 import { OnSiteAdminComponent } from './on-site-admin/on-site-admin.component';
-import {MatTableModule} from "@angular/material/table";
-import {MaterialModule} from "./main/angular-material-elements/material.module";
+import {MaterialModule} from './main/angular-material-elements/material.module';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { CreateComponent } from './forms/create/create.component';
+import { IsNumberEvenDirective } from './validates/is-number-even.directive';
+import { ListVendorComponent } from './vendor/list-vendor/list-vendor.component';
 
 const appRoutes: Routes = [
     {
@@ -50,6 +53,16 @@ const appRoutes: Routes = [
         component: OnSiteAdminComponent
     },
     {
+        path        : 'create',
+        component   : CreateComponent
+    },
+
+    {
+        path        : 'vendors',
+        component   : ListVendorComponent
+    },
+
+    {
         path      : '**',
         redirectTo: 'apps/dashboards/analytics'
     },
@@ -58,7 +71,11 @@ const appRoutes: Routes = [
 @NgModule({
     declarations: [
         AppComponent,
-        OnSiteAdminComponent
+        OnSiteAdminComponent,
+        DialogConfirmComponent,
+        CreateComponent,
+        IsNumberEvenDirective,
+        ListVendorComponent
     ],
     imports: [
         BrowserModule,
@@ -93,7 +110,10 @@ const appRoutes: Routes = [
     ],
     bootstrap   : [
         AppComponent
-    ]
+    ],
+    entryComponents: [
+        DialogConfirmComponent
+    ],
 })
 export class AppModule
 {

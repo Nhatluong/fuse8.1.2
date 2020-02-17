@@ -1,0 +1,20 @@
+//:host {
+//    #delivery-information {
+//        form {
+//            .form-input {
+//                height: calc(100vh - 320px);
+//                overflow-x: scroll;
+//            }
+//        }
+//    }
+//}
+mat-card.mat-card {
+    width: 100%;
+    /* padding: 10px; */
+}
+.p24 {
+    padding: 24px;
+}
+.invalid-feedback {
+    color: red;
+}
