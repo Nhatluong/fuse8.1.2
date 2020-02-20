@@ -1,0 +1,64 @@
+<div class="full-screen">
+    <h2>Tạo một nhà cung cấp</h2>
+
+    <mat-card>
+        <div id="delivery-information">
+            <form (ngSubmit)="onSubmit()"  [formGroup]="vendor" novalidate fxFlex="100" fxLayout="column" fxLayoutGap="10px" class="mat-elevation-z8 p24">
+
+                <div fxLayoutAlign="space-between center">
+                    <mat-form-field fxFlex="49">
+                        <input matInput type="text" formControlName="code" placeholder="Code" >
+                        <div *ngIf="submitted && formValidate.code.errors" class="invalid-feedback">
+                            <div *ngIf="formValidate.code.errors.required">Code is required</div>
+                            <div *ngIf="formValidate.code.errors.forbiddenName">no match phone</div>
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="space-between center">
+                    <mat-form-field fxFlex="49">
+                        <input matInput type="text" formControlName="company_name" placeholder="Company name" >
+<!--                        <div *ngIf="createForm.submitted && company_name.invalid || company_name.dirty || company_name.touched">-->
+<!--                            <div *ngIf="company_name?.errors?.required" class="invalid-feedback"> Company name is required</div>-->
+<!--                        </div>-->
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="space-between center">
+                    <mat-form-field fxFlex="49">
+                        <input matInput type="text" formControlName="main_items" placeholder="Main item">
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="space-between center">
+                    <mat-form-field fxFlex="49">
+                        <input matInput type="text" formControlName="email" placeholder="Email">
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="space-between center">
+                    <mat-form-field fxFlex="49">
+                        <input matInput type="text" formControlName="address" placeholder="Address">
+                    </mat-form-field>
+                </div>
+                <div fxLayoutAlign="space-between center">
+
+                </div>
+                <div formArrayName="products">
+
+                    <div *ngFor="let product of products.controls; let i=index">
+                        <!-- The repeated alias template -->
+                        <mat-form-field>
+                            <input matInput [formControlName]="i" type="text" placeholder="product">
+                        </mat-form-field>
+                    </div>
+                    <button (click)="addProduct()">Add product</button>
+                </div>
+
+                <div class="form-action" fxFlex="49" fxLayoutAlign="space-between center">
+                    <button mat-raised-button color="accent" >
+                        <mat-icon>save</mat-icon>
+                        Save
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </mat-card>
+</div>

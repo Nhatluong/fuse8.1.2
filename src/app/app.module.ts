@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TranslateModule } from '@ngx-translate/core';
-import 'hammerjs';
 
 import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -26,6 +25,9 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
 import { CreateComponent } from './forms/create/create.component';
 import { IsNumberEvenDirective } from './validates/is-number-even.directive';
 import { ListVendorComponent } from './vendor/list-vendor/list-vendor.component';
+import { CreateVendorComponent } from './vendor/create-vendor/create-vendor.component';
+import { MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
     {
@@ -61,6 +63,10 @@ const appRoutes: Routes = [
         path        : 'vendors',
         component   : ListVendorComponent
     },
+    {
+        path        : 'vendor/create',
+        component   : CreateVendorComponent
+    },
 
     {
         path      : '**',
@@ -75,13 +81,16 @@ const appRoutes: Routes = [
         DialogConfirmComponent,
         CreateComponent,
         IsNumberEvenDirective,
-        ListVendorComponent
+        ListVendorComponent,
+        CreateVendorComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
+        MatInputModule,
+        ReactiveFormsModule,
 
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
